@@ -120,7 +120,6 @@ resource "aws_ecs_task_definition" "default" {
 
 # IAM
 data "aws_iam_policy_document" "ecs_task" {
-  count =  1
 
   statement {
     effect  = "Allow"
@@ -198,7 +197,6 @@ resource "aws_iam_role_policy" "ecs_service" {
 }
 
 data "aws_iam_policy_document" "ecs_ssm_exec" {
-  count = 1
 
   statement {
     effect    = "Allow"
