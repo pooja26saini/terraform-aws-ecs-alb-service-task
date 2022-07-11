@@ -120,7 +120,7 @@ resource "aws_ecs_task_definition" "default" {
 
 # IAM
 data "aws_iam_policy_document" "ecs_task" {
-  count = local.create_task_role ? 1 : 0
+  count = local.create_task_role == 1
 
   statement {
     effect  = "Allow"
@@ -198,7 +198,7 @@ resource "aws_iam_role_policy" "ecs_service" {
 }
 
 data "aws_iam_policy_document" "ecs_ssm_exec" {
-  count = local.create_task_role && var.exec_enabled ? 1 : 0
+  count = local.create_task_role && var.exec_enabled == 1
 
   statement {
     effect    = "Allow"
